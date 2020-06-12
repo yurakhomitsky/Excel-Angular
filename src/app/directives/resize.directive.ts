@@ -2,9 +2,9 @@ import { Directive, ElementRef, Renderer2, HostListener,} from '@angular/core';
 
 
 @Directive({
-  selector: '[appResizeColumn]'
+  selector: '[appResize]'
 })
-export class ResizeColumnDirective {
+export class ResizeDirective {
   private parentNode;
   private parentCoords;
   private value = null;

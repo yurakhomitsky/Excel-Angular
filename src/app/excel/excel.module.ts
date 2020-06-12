@@ -7,7 +7,7 @@ import { FormulaComponent } from './components/formula/formula.component';
 import { TableComponent } from './components/table/table.component';
 import { ExcelComponent } from './components/excel/excel.component';
 import { FakeArrayPipe } from '../pipes/fake-array.pipe';
-import { ResizeColumnDirective } from '../directives/resize-column.directive';
+import { ResizeDirective } from '../directives/resize.directive';
 
 
 
@@ -19,7 +19,7 @@ import { ResizeColumnDirective } from '../directives/resize-column.directive';
     TableComponent,
     ExcelComponent,
     FakeArrayPipe,
-    ResizeColumnDirective,
+    ResizeDirective,
   ],
   imports: [
     CommonModule,
