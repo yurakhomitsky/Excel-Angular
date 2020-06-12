@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExcelModule } from './excel/excel.module';
 import { FakeArrayPipe } from './pipes/fake-array.pipe';
+import { ResizeColumnDirective } from './directives/resize-column.directive';
 
 @NgModule({
   declarations: [

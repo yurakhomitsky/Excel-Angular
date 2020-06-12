@@ -1,21 +1,21 @@
-<div class="excel__table">
+<div class="excel__table" appResizeColumn>
     <div class="row">
         <div class="row-info"></div>
         <div class="row-data">
-            <div class="column" *ngFor="let col of colsCount | fakeArray; let index = index">
-                {{toChar(col)}}
-                <div class="col-resize"></div>
+            <div class="column"  data-type="resizable" [attr.data-col]="index"  *ngFor="let col of cols; let index = index">
+                {{col}}
+                <div class="col-resize" data-resize="col"  ></div>
             </div>
         </div>
     </div>
 
-    <div class="row" *ngFor="let row of rowsCount | fakeArray; let index = index"> 
+    <div class="row" data-type="resizable" *ngFor="let row of rowsCount | fakeArray; let index = index"> 
         <div class="row-info">{{index + 1}}
-            <div class="row-resize"></div>
+            <div class="row-resize" data-resize="row"></div>
         </div>
         <div class="row-data">
-            <div class="cell" contenteditable *ngFor="let item of colsCount | fakeArray; let index = index">
-    
+            <div class="cell"  [attr.data-col]="index"  contenteditable *ngFor="let item of cells; let index = index">
+
             </div>
         </div>
     </div>
