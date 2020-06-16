@@ -1,4 +1,4 @@
-<div class="excel__table" appResize>
+<div class="excel__table" appResize  [selectedCell]="selectedCell" (cellToSelect)="select($event)" (cellsToSelect)="selectGroup($event)">
     <div class="row">
         <div class="row-info"></div>
         <div class="row-data">
@@ -14,8 +14,8 @@
             <div class="row-resize" data-resize="row"></div>
         </div>
         <div class="row-data">
-            <div class="cell"  [attr.data-col]="index"  contenteditable *ngFor="let item of cells; let index = index">
-
+            
+            <div #cell class="cell" data-type="cell" attr.data-id="{{row + ':' + col}}"   [attr.data-col]="col"  [ngClass]="{'selected': cell && groupCells.includes(cell.getAttribute('data-id'))}" contenteditable *ngFor="let item of cells; let col = index">
             </div>
         </div>
     </div>

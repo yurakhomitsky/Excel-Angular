@@ -1,6 +1,15 @@
 <div class="excel">
     <app-header></app-header>
     <app-toolbar></app-toolbar>
-    <app-formula></app-formula>
-    <app-table></app-table>
+    <app-formula 
+    [tableSelect]="tableSelect" 
+    [tableInput]="tableInput"
+    (formulaInput)="onFormulaInput($event)"
+     (formulaDone)="onFormulaDone($event)"></app-formula>
+
+    <app-table 
+    [formulaInput]="formulaInput" 
+    [formulaDone]="formulaDone" 
+    (tableSelect)="onTableSelect($event)" 
+    (tableInput)="onTableInput($event)"></app-table>
 </div>

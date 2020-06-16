@@ -1,4 +1,4 @@
 <div class="excel__formula">
   <div class="info">fx</div>
-  <div class="input" contenteditable spellcheck="false"></div>
+  <div #input (keydown)="onKeyDown($event)" (input)="onInput($event.target)" class="input" contenteditable spellcheck="false"></div>
 </div>
