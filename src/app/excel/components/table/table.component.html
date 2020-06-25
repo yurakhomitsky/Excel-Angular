@@ -1,22 +1,29 @@
-<div class="excel__table" appResize  [selectedCell]="selectedCell" (cellToSelect)="select($event)" (cellsToSelect)="selectGroup($event)">
-    <div class="row">
+<div class="excel__table"  appResize  [selectedCell]="selectedCell" (cellToSelect)="select($event)" (cellsToSelect)="selectGroup($event)">
+    <div class="row" >
         <div class="row-info"></div>
         <div class="row-data">
-            <div class="column"  data-type="resizable" [attr.data-col]="index"  *ngFor="let col of cols; let index = index">
+            <div class="column" [ngStyle]="{
+                'width': getWidth(colWidthFromState, index)
+            }"  
+            data-type="resizable" [attr.data-col]="index"  *ngFor="let col of cols; let index = index">
                 {{col}}
-                <div class="col-resize" data-resize="col"  ></div>
+                <div class="col-resize" data-resize="col" ></div>
             </div>
         </div>
     </div>
 
-    <div class="row" data-type="resizable" *ngFor="let row of rowsCount | fakeArray; let index = index"> 
+    <div class="row" [ngStyle]="{ 'height': getHeight(rowHeightFromState, index) }" [attr.data-row]="index"  data-type="resizable" *ngFor="let row of rowsCount | fakeArray; let index = index"> 
         <div class="row-info">{{index + 1}}
             <div class="row-resize" data-resize="row"></div>
         </div>
         <div class="row-data">
-            
-            <div #cell class="cell" data-type="cell" attr.data-id="{{row + ':' + col}}"   [attr.data-col]="col"  [ngClass]="{'selected': cell && groupCells.includes(cell.getAttribute('data-id'))}" contenteditable *ngFor="let item of cells; let col = index">
-            </div>
+            <div #cell class="cell" data-type="cell" attr.data-id="{{row + ':' + col}}"   [attr.data-col]="col"  
+            [ngClass]="{
+                'selected': cell && groupCells.includes(cell.getAttribute('data-id'))
+            }" 
+            [ngStyle]="applyStyle(colWidthFromState, stylesFromState,  col, cell.getAttribute('data-id'), cell)"
+            contenteditable
+            *ngFor="let item of cells; let col = index">{{getText(dataCellsFromState, row + ':' + col)}}</div>
         </div>
     </div>
 

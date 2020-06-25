@@ -29,7 +29,6 @@
             ],
             "styles": [
               "src/styles.scss"
-              
             ],
             "scripts": []
           },
@@ -125,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Angular-Excel"
+    }
+  },
+  "defaultProject": "Angular-Excel",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

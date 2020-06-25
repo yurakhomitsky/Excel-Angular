@@ -1,5 +1,5 @@
 <div class="excel__header">
-  <input class="input" type="text" name="" value="Новая таблица" id="" />
+  <input class="input" type="text" name="" (input)="onInput($event.target)" [value]="titleText" id="" />
   <div>
     <div class="button">
       <span class="material-icons">
