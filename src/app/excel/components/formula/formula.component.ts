@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy,
+  AfterViewInit, ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -9,8 +9,9 @@ import {
   Output,
   Renderer2,
   SimpleChanges,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
+import { StoreService } from '../../../services/store.service';
 
 @Component({
   selector: 'app-formula',
@@ -18,31 +19,28 @@ import {
   styleUrls: ['./formula.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormulaComponent implements OnInit, OnChanges {
-  @Output() formulaInput = new EventEmitter<string>();
+export class FormulaComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() formulaDone = new EventEmitter<void>();
-  @Input() tableSelect;
+  @Output() formulaTextChange = new EventEmitter<string>();
   @Input() tableInput;
 
   @ViewChild('input', { static: false }) input: ElementRef;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private storeService: StoreService) { }
 
-  ngOnChanges({ tableSelect, tableInput }: SimpleChanges): void {
-    if (this.input) {
+  ngOnChanges({ tableInput }: SimpleChanges): void {
 
-      if (tableSelect) {
-        this.renderer.setProperty(this.input.nativeElement, 'textContent', tableSelect.currentValue.textContent);
-      }
-      if (tableInput) {
-        this.renderer.setProperty(this.input.nativeElement, 'textContent', tableInput.currentValue);
-      }
+    if (this.input && tableInput) {
+      const { textContent } = tableInput.currentValue;
+      this.renderer.setProperty(this.input.nativeElement, 'textContent', textContent);
     }
   }
   ngOnInit() { }
 
-  onInput($event: any): void {
-    this.formulaInput.emit($event.textContent);
+  ngAfterViewInit() { }
+
+  onInput(target: any): void {
+    this.formulaTextChange.emit(target.textContent.trim());
   }
   onKeyDown($event: any): void {
     const keys = ['Enter', 'Tab'];

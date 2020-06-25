@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TableComponent } from './components/table/table.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ExcelRoutingModule } from './excel-routing/excel-routing.module';
+import { ButtonStyleComponent } from './components/toolbar/button-style/button-style.component';
 
 
 
@@ -21,6 +22,7 @@ import { ExcelRoutingModule } from './excel-routing/excel-routing.module';
     ExcelComponent,
     FakeArrayPipe,
     ResizeDirective,
+    ButtonStyleComponent
   ],
   imports: [
     CommonModule,

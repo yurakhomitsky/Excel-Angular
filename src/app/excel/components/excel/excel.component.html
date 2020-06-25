@@ -1,15 +1,19 @@
 <div class="excel">
-    <app-header></app-header>
-    <app-toolbar></app-toolbar>
-    <app-formula 
-    [tableSelect]="tableSelect" 
-    [tableInput]="tableInput"
-    (formulaInput)="onFormulaInput($event)"
-     (formulaDone)="onFormulaDone($event)"></app-formula>
+  <app-header [titleText]="titleTextFromState | async"></app-header>
+  <app-toolbar [defaultStyles]="currentStyles | async" (appliedStyles)="onAppliedStyles($event)"></app-toolbar>
+  <app-formula
+    [tableInput]="tableCellTextContent | async"
+    (formulaDone)="onFormulaDone($event)"
+    (formulaTextChange)="onFormulaTextChange($event)"
+  ></app-formula>
 
-    <app-table 
-    [formulaInput]="formulaInput" 
-    [formulaDone]="formulaDone" 
-    (tableSelect)="onTableSelect($event)" 
-    (tableInput)="onTableInput($event)"></app-table>
+  <app-table
+    [stylesFromToolbar]="stylesFromToolBar"
+    [formulaInput]="formulaTextContent"
+    [formulaDone]="formulaDone"
+    [colWidthFromState]="colWidthFromState | async"
+    [rowHeightFromState]="rowHeightFromState | async"
+    [dataCellsFromState]="dataCellsFromState | async"
+    [stylesFromState]="stylesFromState | async"
+  ></app-table>
 </div>
