@@ -10,6 +10,7 @@ import { TableComponent } from './components/table/table.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ExcelRoutingModule } from './excel-routing/excel-routing.module';
 import { ButtonStyleComponent } from './components/toolbar/button-style/button-style.component';
+import { ReduxModule } from '../store/redux.module';
 
 
 
@@ -26,6 +27,7 @@ import { ButtonStyleComponent } from './components/toolbar/button-style/button-s
   ],
   imports: [
     CommonModule,
+    ReduxModule,
     ExcelRoutingModule,
   ],
   exports: [ExcelRoutingModule]

@@ -1,3 +1,4 @@
+import { ExcelState } from '../store/reducers/store.reducer';
 
 export function capitalize(str: string) {
     if (typeof str !== 'string') {
@@ -22,13 +23,28 @@ export function range(start, end) {
         .fill('')
         .map((_, index) => start + index);
 }
-// export function parse(value = '') {
-//     if (value.startsWith('=')) {
-//         try {
-//             return eval(value.slice(1));
-//         } catch (e) {
-//             return value;
-//         }
-//     }
-//     return value;
-// }
+export function storage(key, data = null) {
+    if (!data) {
+        return JSON.parse(localStorage.getItem(key));
+    }
+    localStorage.setItem(key, JSON.stringify(data));
+}
+export function storageName(param) {
+    return 'excel:' + param;
+}
+export interface ExcelTable {
+    id: string;
+    state: ExcelState;
+}
+
+export function getAllKeys(): string[] {
+    const keys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key.includes('excel')) {
+            continue;
+        }
+        keys.push(key);
+    }
+    return keys;
+}

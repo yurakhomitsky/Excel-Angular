@@ -1,0 +1,6 @@
+<ul class="dashboard__list">
+    <li *ngFor="let tbl of tables" class="dashboard__record">
+      <a [routerLink]="['../excel', tbl.id.split(':')[1]]">{{tbl.state.titleState.titleText}} </a>
+      <strong>12.06.2020</strong>
+    </li>
+  </ul>
