@@ -13,3 +13,8 @@ export const loadStoresFailure = createAction(
   '[Store] Load Stores Failure',
   props<{ error: any }>()
 );
+
+export const newTable = createAction(
+  '[DASHBOARD] Table link',
+  props<{link: string}>()
+);

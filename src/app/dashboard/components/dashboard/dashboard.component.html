@@ -1,0 +1,23 @@
+<div class="dashboard">
+    <div class="dashboard__header">
+      <h1>Excel Dashboard</h1>
+    </div>
+    <div class="dashboard__new">
+      <div class="dashboard__view">
+        <a  class="dashboard__create" [routerLink]="['../excel', now]">
+          New <br/> Table
+        </a>
+      </div>
+    </div>
+    <div class="dashboard__table dashboard__view">
+      <div class="dashboard__list-header">
+        <span>Name</span>
+        <span>Latest opening date</span>
+      </div>
+      <app-list-tables *ngIf="keys.length; else elseTemplate" [tables]="keys"></app-list-tables>
+      <ng-template #elseTemplate>
+        <p>You haven't created any tables yes</p>
+      </ng-template>
+      
+    </div>
+  </div>

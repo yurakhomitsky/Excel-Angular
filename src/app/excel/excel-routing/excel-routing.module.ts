@@ -6,10 +6,7 @@ import { ExcelComponent } from '../components/excel/excel.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/excel', pathMatch: 'full',
-  },
-  {
-    path: 'excel', component: ExcelComponent
+    path: '', component: ExcelComponent
   }
 ];
 
